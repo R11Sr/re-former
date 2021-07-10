@@ -1,0 +1,36 @@
+    <br>
+    <br>
+
+<%if notice%>
+   <aside>
+   <div class = 'notice'> <H1><%= notice%> </H1></div>
+   </aside>
+<%end%>
+
+<%= form_with model: @user do |user_form| %>
+      <%if @user.errors.any?%>
+            <%@user.errors.full_messages.each do |err|%>
+             <div><%=err%></div>
+             <% end %>
+        <% end %>
+
+
+    <%=label_tag(:username, "Username")%>
+    <%=user_form.text_field :username%>
+    <br>
+    <br>
+
+    <%=label_tag(:email, "Email")%>
+    <%=user_form.text_field :email, placeholder: "john@public"%>
+    <br>
+    <br>
+
+    <%=label_tag(:password, "Password")%>
+    <%=user_form.password_field :password%>
+
+    <br>
+    <br>
+    
+    <%=user_form.submit%>
+
+<% end %>
